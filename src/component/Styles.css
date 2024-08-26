@@ -1,0 +1,13 @@
+.main{
+    border: 4px solid gray;
+    width: 200px;
+    margin-bottom: 10px;
+    color: brown;
+
+}
+.icon{
+    float: right;
+    margin-right: 10px;
+    color: brown;
+
+}

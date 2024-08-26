@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import FirstPage from './component/FirstPage';
+import { useState } from 'react';
+import MapItem from './component/MapItem';
 
 function App() {
+  const [todolist,setTodoList]=useState([]);
+  console.log("===>",todolist)
+
+  const addList=(inputtext)=>{
+    if(inputtext!=="")
+ setTodoList([...todolist,inputtext])
+  }
+  const deleteItemLIst=(Key)=>{
+    let newdata=[...todolist]
+    newdata.splice(Key,1)
+    setTodoList([...newdata])
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <FirstPage addList={addList}/>
+     {todolist.map((item,index)=>{
+      return(
+        <MapItem item={item} key={index} deleteitem={deleteItemLIst} index={index}/>
+      )
+     })}
     </div>
   );
 }
